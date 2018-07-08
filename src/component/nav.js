@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ImgLogo from  '../images/mf-logo-white.svg'
 
 class Nav extends Component {
   render() {
     return(
       <ul>
-        <li><Link className="active" to="#">Home</Link></li>
-        <li><Link className="active" to="#">About</Link></li>
-        <li><Link to="#">Terms+Conditions</Link></li>
-        <li><Link to="#">All</Link></li>
-        <li><Link to="#">Seating</Link> </li>
-        <li><Link to="#">Tables</Link> </li>
-        <li><Link to="#">Desks</Link> </li>
-        <li><Link to="#">Storag</Link> </li>
-        <li><Link to="#">Bedroom</Link> </li>
-        <li><Link to="#">Misc</Link> </li>
-        <li><Link to="#"><i class="fas fa-cart-plus"></i></Link></li>
+        <li><Link to="#" className="active icon-menu2" ><img src={ ImgLogo }/></Link></li>
+        <li><Link className="active" to="/about">About</Link></li>
+        <li><Link to="/terms">Terms+Conditions</Link></li>
+          <li ><Link to="null">|</Link></li>
+          <li><Link to="#">All</Link></li>
+          <li className="colorBlue"><Link to="/category/Seating">Seating</Link> </li>
+          <li className="colorBlue"><Link to="/category/Tables">Tables</Link> </li>
+          <li className="colorBlue"><Link to="/category/Desks">Desks</Link> </li>
+          <li className="colorBlue"><Link to="/category/Storag">Storag</Link> </li>
+          <li className="colorBlue"><Link to="/category/Bedroom">Bedroom</Link> </li>
+          <li className="colorBlue"><Link to="/category/Misc">Misc</Link> </li>
+          <li ><Link to="null">|</Link></li>
+        <li className="amarillo"><Link to="#"><i className="fas fa-cart-plus"></i></Link></li>
       </ul>
 
     )
