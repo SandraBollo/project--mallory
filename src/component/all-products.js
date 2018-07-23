@@ -12,8 +12,23 @@ class Allproducts extends Component {
 
 _ferchfurnitureData(componentProps){
   let lisApi = 'https://mallory-furniture-admin.now.sh/api/v1/products'
-  // let allproductsInRoute =componentprops.match.params.
+  let allproductsInRoute = componentProps.match.params.categoryType
   // let SeatingProductsInRoute = componentprops.match.params.
+
+  if(typeof allproductsInRoute !== 'undefined'){
+    const genderObjMap ={
+      Seating : "seating",
+      Tables : "tables",
+      Desks : "desks",
+      Storag : "storag",
+      Bedroom : "bedroom",
+      Misc :"miscellaneous"
+
+
+    }
+    lisApi = `https://mallory-furniture-admin.now.sh/api/v1/products?category=${genderObjMap[allproductsInRoute]}`
+
+  }
 
 
 
@@ -30,11 +45,39 @@ request
 
 }
 componentWillMount(){
-  this._ferchfurnitureData(this.pros)
+  this._ferchfurnitureData(this.props)
 }
 componentWillReceiveProps(newProps){
   this._ferchfurnitureData(newProps)
 }
+
+_renderFillcards( lisData){
+  let fiLis = this.state.furnitureDataList.filter(function(objN){
+    if(objN.category === "seating"){
+      return true
+    }else   if(objN.category === "tables"){
+        return true
+
+    }else if(objN.category === "desks"){
+        return true
+
+
+    }else if (objN.category === "storag") {
+      return true
+
+    }else if(objN.category ==="bedroom"){
+      return true
+    }else if(objN.category === "miscellaneous"){
+      return true
+
+    }else {
+      return false
+    }
+  })
+
+}
+
+
   _renderCards(Allproducts){
     let userComponentList = Allproducts.map((cardObj, i)=>{
       return(
@@ -55,12 +98,18 @@ componentWillReceiveProps(newProps){
   render() {
     return (
       <section>
+
       <div className="content">
-      <h2>All Products</h2>
-        <h4>All available listings</h4>
-        <h3>-l-</h3>
-          <div className="hola">
-              // <Products/>
+          <h2 className="tituloAll">Featured Poducts</h2>
+    		<h3 className="colorGris subAll">Check out some of our favorite listings</h3>
+      <div className="item">
+    		<button className="btn-red colorRed">All items</button>
+    		<button className="btn-gris colorGris">on Sale</button>
+    		<p className="align"><span className="yellow"><strong>61</strong></span> <span className="colorGris">items showing</span></p>
+      </div>
+
+          <div className="row">
+
               {this._renderCards(this.state.furnitureDataList)}
           </div>
       </div>

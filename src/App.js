@@ -12,6 +12,8 @@ import Category from './component/category.js';
 import Home from './component/home.js';
 import Products from './component/product.js';
 import Terms from './component/terms.js';
+import Header from './component/header.js';
+import NoMatch404 from './component/NoMatch404.js';
 
 
 class App extends Component {
@@ -27,6 +29,7 @@ class App extends Component {
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/about" component={About} />
           <Route exact path="/" component={Home} />
+          <Route component={NoMatch404}/>
         </Switch>
         <Footer />
       </div>
